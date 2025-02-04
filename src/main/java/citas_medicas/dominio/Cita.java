@@ -1,14 +1,12 @@
 package citas_medicas.dominio;
 
+import citas_medicas.dto.CitaDTO;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import utils.Utils;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -42,5 +40,11 @@ public class Cita {
         this.motivoCita = motivoCita;
         this.paciente = paciente;
         this.medico = medico;
+    }
+
+    // Metodo para convertir una Cita en un CitaDTO
+    public CitaDTO toDTO() {
+        return new CitaDTO(this.id, this.fechaHora, this.motivoCita,
+                this.paciente.toDTO(), this.medico.toDTO(), this.diagnostico.toDTO());
     }
 }

@@ -1,5 +1,6 @@
 package citas_medicas.dominio;
 
+import citas_medicas.dto.DiagnosticoDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -27,5 +28,10 @@ public class Diagnostico {
         this.valoracionEspecialista = valoracionEspecialista;
         this.enfermedad = enfermedad;
         this.cita = cita;
+    }
+
+    // Metodo para convertir un Diagnostico en un DiagnosticoDTO
+    public DiagnosticoDTO toDTO() {
+        return new DiagnosticoDTO(this.id, this.valoracionEspecialista, this.enfermedad, this.cita.toDTO());
     }
 }

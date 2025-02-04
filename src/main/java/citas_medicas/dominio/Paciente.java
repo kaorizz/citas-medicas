@@ -1,10 +1,13 @@
 package citas_medicas.dominio;
 
+import citas_medicas.dto.CitaDTO;
+import citas_medicas.dto.PacienteDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -26,5 +29,14 @@ public class Paciente extends Usuario {
         this.numTarjeta = numTarjeta;
         this.telefono = telefono;
         this.direccion = direccion;
+    }
+
+    // Metodo para convertir un Paciente en un PacienteDTO
+    public PacienteDTO toDTO() {
+        List<CitaDTO> citasDTO = new ArrayList<>();
+        for (Cita c : this.citas) {
+            citasDTO.add(c.toDTO());
+        }
+        return new PacienteDTO(getId(), getNombre(), getApellidos(), getUsuario(), getClave(), this.NSS, this.numTarjeta, this.telefono, this.direccion, citasDTO);
     }
 }
