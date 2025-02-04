@@ -2,8 +2,8 @@ package citas_medicas.servicio;
 
 import citas_medicas.dominio.Cita;
 import citas_medicas.dominio.Medico;
-import citas_medicas.repositorio.CitaRepositorio;
-import citas_medicas.repositorio.MedicoRepositorio;
+import citas_medicas.repositorio.RepositorioCitas;
+import citas_medicas.repositorio.RepositorioMedicos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +13,23 @@ import java.util.List;
 public class ServicioMedicos implements IServicioMedicos {
 
     @Autowired
-    private MedicoRepositorio medicoRepositorio;
+    private RepositorioMedicos repositorioMedicos;
 
     @Autowired
-    private CitaRepositorio citaRepositorio;
+    private RepositorioCitas repositorioCitas;
+
+    public ServicioMedicos(RepositorioMedicos repositorioMedicos, RepositorioCitas repositorioCitas) {
+        this.repositorioMedicos = repositorioMedicos;
+        this.repositorioCitas = repositorioCitas;
+    }
 
     @Override
     public Medico registrarMedico(Medico medico) {
-        return medicoRepositorio.save(medico);
+        return repositorioMedicos.save(medico);
     }
 
     @Override
     public List<Cita> obtenerCitasMedico(String medicoId) {
-        return citaRepositorio.findByMedicoId(medicoId);
+        return repositorioCitas.findByMedicoId(medicoId);
     }
 }

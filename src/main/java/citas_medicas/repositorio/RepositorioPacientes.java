@@ -1,9 +1,9 @@
 package citas_medicas.repositorio;
 
-import citas_medicas.dominio.Diagnostico;
+import citas_medicas.dominio.Paciente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DiagnosticoRepositorio extends JpaRepository<Diagnostico, String> {
+public interface RepositorioPacientes extends JpaRepository<Paciente, String> {
 }
