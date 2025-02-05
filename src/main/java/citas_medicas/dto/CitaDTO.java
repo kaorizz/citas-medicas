@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CitaDTO {
 
-    private String id;
+    private Long id;
     private LocalDateTime fechaHora;
     private String motivoCita;
     private PacienteDTO paciente;

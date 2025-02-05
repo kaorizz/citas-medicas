@@ -2,6 +2,7 @@ package citas_medicas.dominio;
 
 import citas_medicas.dto.CitaDTO;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import utils.Utils;
@@ -10,11 +11,13 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Cita {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaHora;
@@ -31,16 +34,6 @@ public class Cita {
 
     @OneToOne(mappedBy = "cita", cascade = CascadeType.ALL)
     private Diagnostico diagnostico;
-
-    // Constructor con todos los campos
-    public Cita(LocalDateTime fechaHora, String motivoCita,
-                Paciente paciente, Medico medico) {
-        this.id = Utils.createId();
-        this.fechaHora = fechaHora;
-        this.motivoCita = motivoCita;
-        this.paciente = paciente;
-        this.medico = medico;
-    }
 
     // Metodo para convertir una Cita en un CitaDTO
     public CitaDTO toDTO() {

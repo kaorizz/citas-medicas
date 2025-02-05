@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 public class DiagnosticoDTO {
 
-    private String id;
+    private Long id;
     private String valoracionEspecialista;
     private String enfermedad;
     private CitaDTO cita;

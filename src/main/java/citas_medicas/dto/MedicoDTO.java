@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MedicoDTO {
 
-    private String id;
+    private Long id;
     private String nombre;
     private String apellidos;
     private String usuario;

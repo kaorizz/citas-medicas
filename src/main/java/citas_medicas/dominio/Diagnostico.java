@@ -2,32 +2,24 @@ package citas_medicas.dominio;
 
 import citas_medicas.dto.DiagnosticoDTO;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import utils.Utils;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Diagnostico {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String valoracionEspecialista;
     private String enfermedad;
 
     @OneToOne
     @JoinColumn(name = "cita_id")
     private Cita cita;
-
-    // Constructor con todos los campos
-    public Diagnostico(String valoracionEspecialista, String enfermedad) {
-        this.id = Utils.createId();
-        this.valoracionEspecialista = valoracionEspecialista;
-        this.enfermedad = enfermedad;
-    }
 
     // Metodo para convertir un Diagnostico en un DiagnosticoDTO
     public DiagnosticoDTO toDTO() {

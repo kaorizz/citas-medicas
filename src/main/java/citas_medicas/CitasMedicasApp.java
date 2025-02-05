@@ -37,7 +37,7 @@ public class CitasMedicasApp {
     public void run(String... args) {
         System.out.println("▶ Iniciando pruebas de la aplicación de citas médicas...");
 
-        Paciente paciente1 = new Paciente("Juan", "Pérez", "juan.perez", "12345", "3081785698", "P001", "682009652", "Calle Morera 20");
+        /*Paciente paciente1 = new Paciente("Juan", "Pérez", "juan.perez", "12345", "3081785698", "P001", "682009652", "Calle Morera 20");
         Paciente paciente2 = new Paciente("María", "Gómez", "maria.gomez", "1234", "3081785170", "P002", "612840923", "Calle Mayor 4");
 
         Medico medico1 = new Medico("Pedro", "López", "pedro.lopez", "12345", "M001");
@@ -49,10 +49,10 @@ public class CitasMedicasApp {
         servicioMedicos.registrarMedico(medico1);
         servicioMedicos.registrarMedico(medico2);
 
-        Cita cita1 = servicioCitas.agendarCita(paciente1.getId(), medico1.getId(), LocalDateTime.parse("2025-02-07T10:00:00"));
-        Cita cita2 = servicioCitas.agendarCita(paciente2.getId(), medico2.getId(), LocalDateTime.parse("2025-02-07T11:00:00"));
+        Cita cita1 = servicioCitas.agendarCita(paciente1.getId().toString(), medico1.getId().toString(), LocalDateTime.parse("2025-02-07T10:00:00"));
+        Cita cita2 = servicioCitas.agendarCita(paciente2.getId().toString(), medico2.getId().toString(), LocalDateTime.parse("2025-02-07T11:00:00"));
 
         Diagnostico diagnostico1 = new Diagnostico("Gripe", "Tomar medicamento y reposo");
-        servicioDiagnosticos.realizarDiagnostico(cita1.getId(), diagnostico1);
+        servicioDiagnosticos.realizarDiagnostico(cita1.getId().toString(), diagnostico1);*/
     }
 }
