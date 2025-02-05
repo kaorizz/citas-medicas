@@ -23,11 +23,10 @@ public class Diagnostico {
     private Cita cita;
 
     // Constructor con todos los campos
-    public Diagnostico(String valoracionEspecialista, String enfermedad, Cita cita) {
+    public Diagnostico(String valoracionEspecialista, String enfermedad) {
         this.id = Utils.createId();
         this.valoracionEspecialista = valoracionEspecialista;
         this.enfermedad = enfermedad;
-        this.cita = cita;
     }
 
     // Metodo para convertir un Diagnostico en un DiagnosticoDTO

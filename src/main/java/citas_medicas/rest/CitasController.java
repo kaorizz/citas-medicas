@@ -23,7 +23,7 @@ public class CitasController {
                                          @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fechaHora) {
         try {
             Cita cita = servicioCitas.agendarCita(pacienteId, medicoId, fechaHora);
-            return ResponseEntity.ok(cita);
+            return ResponseEntity.ok(cita.toDTO());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
