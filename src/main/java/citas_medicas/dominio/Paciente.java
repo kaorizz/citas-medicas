@@ -2,10 +2,7 @@ package citas_medicas.dominio;
 
 import citas_medicas.dto.CitaDTO;
 import citas_medicas.dto.PacienteDTO;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -24,6 +21,11 @@ public class Paciente extends Usuario {
     private String direccion;
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cita> citas;
-    @ManyToMany(mappedBy = "pacientes")
-    private List<Paciente> pacientes;
+    @ManyToMany
+    @JoinTable(
+            name = "paciente_medico",  // Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "paciente_id"),  // Columna que referencia a Paciente
+            inverseJoinColumns = @JoinColumn(name = "medico_id")  // Columna que referencia a Medico
+    )
+    private List<Paciente> medicos;
 }

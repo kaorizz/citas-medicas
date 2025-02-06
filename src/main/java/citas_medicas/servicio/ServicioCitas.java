@@ -10,6 +10,7 @@ import citas_medicas.repositorio.RepositorioMedicos;
 import citas_medicas.repositorio.RepositorioPacientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -35,6 +36,7 @@ public class ServicioCitas implements IServicioCitas {
         this.citaMapper = citaMapper;
     }
 
+    @Transactional
     @Override
     public CitaDTO agendarCita(String pacienteId, String medicoId, LocalDateTime fechaHora) {
         Paciente paciente = repositorioPacientes.findById(pacienteId)

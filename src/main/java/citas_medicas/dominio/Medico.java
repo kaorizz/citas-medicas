@@ -22,5 +22,5 @@ public class Medico extends Usuario {
     @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cita> citas;
     @ManyToMany(mappedBy = "medicos")
-    private List<Paciente> medicos;
+    private List<Paciente> pacientes;
 }

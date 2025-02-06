@@ -10,9 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface DiagnosticoMapper {
     DiagnosticoMapper INSTANCE = Mappers.getMapper(DiagnosticoMapper.class);
 
-    @Mapping(target = "diagnosticos", source = "diagnosticos")
     DiagnosticoDTO diagnosticoToDiagnosticoDTO(Diagnostico diagnostico);
 
-    @Mapping(target = "diagnosticos", source = "diagnosticos")
     Diagnostico diagnosticoDTOToDiagnostico(DiagnosticoDTO diagnosticoDTO);
 }

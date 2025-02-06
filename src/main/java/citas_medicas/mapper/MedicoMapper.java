@@ -10,9 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface MedicoMapper {
     MedicoMapper INSTANCE = Mappers.getMapper(MedicoMapper.class);
 
-    @Mapping(target = "citas", source = "citas")
     MedicoDTO medicoToMedicoDTO(Medico medico);
 
-    @Mapping(target = "citas", source = "citas")
     Medico medicoDTOToMedico(MedicoDTO medicoDTO);
 }
