@@ -23,13 +23,4 @@ public class Medico extends Usuario {
     private List<Cita> citas;
     @ManyToMany(mappedBy = "medicos")
     private List<Paciente> medicos;
-
-    // Metodo para convertir un Medico en un MedicoDTO
-    public MedicoDTO toDTO() {
-        List<CitaDTO> citasDTO = new ArrayList<>();
-        for (Cita c : this.citas) {
-            citasDTO.add(c.toDTO());
-        }
-        return new MedicoDTO(getId(), getNombre(), getApellidos(), getUsuario(), getClave(), this.numColegiado, citasDTO);
-    }
 }

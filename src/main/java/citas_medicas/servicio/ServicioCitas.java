@@ -3,6 +3,8 @@ package citas_medicas.servicio;
 import citas_medicas.dominio.Cita;
 import citas_medicas.dominio.Medico;
 import citas_medicas.dominio.Paciente;
+import citas_medicas.dto.CitaDTO;
+import citas_medicas.mapper.CitaMapper;
 import citas_medicas.repositorio.RepositorioCitas;
 import citas_medicas.repositorio.RepositorioMedicos;
 import citas_medicas.repositorio.RepositorioPacientes;
@@ -23,14 +25,18 @@ public class ServicioCitas implements IServicioCitas {
     @Autowired
     private RepositorioMedicos repositorioMedicos;
 
-    public ServicioCitas(RepositorioCitas repositorioCitas, RepositorioPacientes repositorioPacientes, RepositorioMedicos repositorioMedicos) {
+    @Autowired
+    private CitaMapper citaMapper;
+
+    public ServicioCitas(RepositorioCitas repositorioCitas, RepositorioPacientes repositorioPacientes, RepositorioMedicos repositorioMedicos, CitaMapper citaMapper) {
         this.repositorioCitas = repositorioCitas;
         this.repositorioPacientes = repositorioPacientes;
         this.repositorioMedicos = repositorioMedicos;
+        this.citaMapper = citaMapper;
     }
 
     @Override
-    public Cita agendarCita(String pacienteId, String medicoId, LocalDateTime fechaHora) {
+    public CitaDTO agendarCita(String pacienteId, String medicoId, LocalDateTime fechaHora) {
         Paciente paciente = repositorioPacientes.findById(pacienteId)
                 .orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
 
@@ -52,7 +58,9 @@ public class ServicioCitas implements IServicioCitas {
         nuevaCita.setMedico(medico);
         nuevaCita.setFechaHora(fechaHora);
 
-        return repositorioCitas.save(nuevaCita);
+        Cita citaGuardada = repositorioCitas.save(nuevaCita);
+
+        return citaMapper.citaToCitaDTO(citaGuardada);
     }
 
     @Override

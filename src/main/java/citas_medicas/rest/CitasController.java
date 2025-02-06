@@ -1,6 +1,7 @@
 package citas_medicas.rest;
 
 import citas_medicas.dominio.Cita;
+import citas_medicas.dto.CitaDTO;
 import citas_medicas.servicio.ServicioCitas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,8 +23,8 @@ public class CitasController {
                                          @RequestParam String medicoId,
                                          @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fechaHora) {
         try {
-            Cita cita = servicioCitas.agendarCita(pacienteId, medicoId, fechaHora);
-            return ResponseEntity.ok(cita.toDTO());
+            CitaDTO cita = servicioCitas.agendarCita(pacienteId, medicoId, fechaHora);
+            return ResponseEntity.ok(cita);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

@@ -2,8 +2,10 @@ package citas_medicas.servicio;
 
 import citas_medicas.dominio.Cita;
 import citas_medicas.dominio.Diagnostico;
+import citas_medicas.dto.CitaDTO;
+import citas_medicas.dto.DiagnosticoDTO;
 
 public interface IServicioDiagnosticos {
 
-    Cita realizarDiagnostico(String citaId, Diagnostico diagnostico);
+    CitaDTO realizarDiagnostico(String citaId, DiagnosticoDTO diagnosticoDTO);
 }

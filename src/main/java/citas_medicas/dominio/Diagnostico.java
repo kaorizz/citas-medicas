@@ -12,7 +12,8 @@ import utils.Utils;
 public class Diagnostico {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mi_seq_generator")
+    @SequenceGenerator(name = "mi_seq_generator", sequenceName = "MI_SEQ", allocationSize = 1)
     private Long id;
     private String valoracionEspecialista;
     private String enfermedad;
@@ -20,9 +21,4 @@ public class Diagnostico {
     @OneToOne
     @JoinColumn(name = "cita_id")
     private Cita cita;
-
-    // Metodo para convertir un Diagnostico en un DiagnosticoDTO
-    public DiagnosticoDTO toDTO() {
-        return new DiagnosticoDTO(this.id, this.valoracionEspecialista, this.enfermedad, this.cita.toDTO());
-    }
 }

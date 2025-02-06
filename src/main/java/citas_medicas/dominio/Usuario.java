@@ -11,8 +11,8 @@ import utils.Utils;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mi_seq_generator")
+    @SequenceGenerator(name = "mi_seq_generator", sequenceName = "MI_SEQ", allocationSize = 1)
     private Long id;
     private String nombre;
     private String apellidos;

@@ -20,18 +20,14 @@ public class MedicosController {
     private ServicioMedicos servicioMedicos;
 
     @PostMapping("")
-    public ResponseEntity<MedicoDTO> registrarMedico(@RequestBody Medico medico) {
-        Medico nuevoMedico = servicioMedicos.registrarMedico(medico);
-        return ResponseEntity.ok(nuevoMedico.toDTO());
+    public ResponseEntity<MedicoDTO> registrarMedico(@RequestBody MedicoDTO medicoDTO) {
+        MedicoDTO nuevoMedico = servicioMedicos.registrarMedico(medicoDTO);
+        return ResponseEntity.ok(nuevoMedico);
     }
 
     @GetMapping("/{id}/citas")
     public ResponseEntity<List<CitaDTO>> obtenerCitasMedico(@PathVariable String id) {
-        List<Cita> citas = servicioMedicos.obtenerCitasMedico(id);
-        List<CitaDTO> citasDTO = new ArrayList<>();
-        for (Cita cita : citas) {
-            citasDTO.add(cita.toDTO());
-        }
-        return ResponseEntity.ok(citasDTO);
+        List<CitaDTO> citas = servicioMedicos.obtenerCitasMedico(id);
+        return ResponseEntity.ok(citas);
     }
 }

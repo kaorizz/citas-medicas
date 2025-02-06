@@ -16,7 +16,8 @@ import java.time.LocalDateTime;
 public class Cita {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mi_seq_generator")
+    @SequenceGenerator(name = "mi_seq_generator", sequenceName = "MI_SEQ", allocationSize = 1)
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -34,10 +35,4 @@ public class Cita {
 
     @OneToOne(mappedBy = "cita", cascade = CascadeType.ALL)
     private Diagnostico diagnostico;
-
-    // Metodo para convertir una Cita en un CitaDTO
-    public CitaDTO toDTO() {
-        return new CitaDTO(this.id, this.fechaHora, this.motivoCita,
-                this.paciente.toDTO(), this.medico.toDTO(), this.diagnostico.toDTO());
-    }
 }

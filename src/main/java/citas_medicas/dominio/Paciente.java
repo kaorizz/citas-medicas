@@ -26,13 +26,4 @@ public class Paciente extends Usuario {
     private List<Cita> citas;
     @ManyToMany(mappedBy = "pacientes")
     private List<Paciente> pacientes;
-
-    // Metodo para convertir un Paciente en un PacienteDTO
-    public PacienteDTO toDTO() {
-        List<CitaDTO> citasDTO = new ArrayList<>();
-        for (Cita c : this.citas) {
-            citasDTO.add(c.toDTO());
-        }
-        return new PacienteDTO(getId(), getNombre(), getApellidos(), getUsuario(), getClave(), this.NSS, this.numTarjeta, this.telefono, this.direccion, citasDTO);
-    }
 }
