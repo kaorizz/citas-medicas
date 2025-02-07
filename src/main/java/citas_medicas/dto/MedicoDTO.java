@@ -15,5 +15,5 @@ public class MedicoDTO {
     private String usuario;
     private String clave;
     private String numColegiado;
-    private List<CitaDTO> citas;
+    //private List<CitaDTO> citas;
 }

@@ -17,7 +17,7 @@ public class DiagnosticosController {
     private ServicioDiagnosticos serviciosDiagnosticos;
 
     @PostMapping("/{idCita}/diagnostico")
-    public ResponseEntity<CitaDTO> realizarDiagnostico(@PathVariable String idCita, @RequestParam DiagnosticoDTO diagnosticoDTO) {
+    public ResponseEntity<CitaDTO> realizarDiagnostico(@PathVariable String idCita, @RequestBody DiagnosticoDTO diagnosticoDTO) {
         CitaDTO cita = serviciosDiagnosticos.realizarDiagnostico(idCita, diagnosticoDTO);
         return ResponseEntity.ok(cita);
     }

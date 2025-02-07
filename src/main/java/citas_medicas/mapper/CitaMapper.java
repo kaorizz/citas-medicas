@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface CitaMapper {
     CitaMapper INSTANCE = Mappers.getMapper(CitaMapper.class);
 
+    @Mapping(target = "diagnostico", ignore = true)  // 🚨 Evita la recursión
     CitaDTO citaToCitaDTO(Cita cita);
 
     Cita citaDTOToCita(CitaDTO citaDTO);

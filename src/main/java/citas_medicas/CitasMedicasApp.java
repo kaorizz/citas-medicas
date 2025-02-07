@@ -41,25 +41,25 @@ public class CitasMedicasApp implements CommandLineRunner {
         System.out.println("▶ Iniciando pruebas de la aplicación de citas médicas...");
 
         // 1️⃣ Crear y registrar pacientes
-        PacienteDTO paciente1 = new PacienteDTO(null, "Juan", "Pérez", "juanp", "1234", "123456789", "987654321", "666111222", "Calle A", null);
-        PacienteDTO paciente2 = new PacienteDTO(null, "María", "Gómez", "mariag", "1234", "987654321", "123456789", "666222333", "Calle B", null);
+        //PacienteDTO paciente1 = new PacienteDTO(null, "Juan", "Pérez", "juanp", "1234", "123456789", "987654321", "666111222", "Calle A", null);
+        //PacienteDTO paciente2 = new PacienteDTO(null, "María", "Gómez", "mariag", "1234", "987654321", "123456789", "666222333", "Calle B", null);
 
-        paciente1 = servicioPacientes.registrarPaciente(paciente1);
-        paciente2 = servicioPacientes.registrarPaciente(paciente2);
+        //paciente1 = servicioPacientes.registrarPaciente(paciente1);
+        //paciente2 = servicioPacientes.registrarPaciente(paciente2);
 
         // 2️⃣ Crear y registrar médicos
-        MedicoDTO medico1 = new MedicoDTO(null, "Dr. Carlos", "Sánchez", "carlos.s", "cardiología", "carlos@hospital.com", null);
-        MedicoDTO medico2 = new MedicoDTO(null, "Dra. Laura", "Martínez", "laura.m", "pediatría", "laura@hospital.com", null);
+        //MedicoDTO medico1 = new MedicoDTO(null, "Dr. Carlos", "Sánchez", "carlos.s", "cardiología", "carlos@hospital.com", null);
+        //MedicoDTO medico2 = new MedicoDTO(null, "Dra. Laura", "Martínez", "laura.m", "pediatría", "laura@hospital.com", null);
 
         //medico1 = servicioMedicos.registrarMedico(medico1);
         //medico2 = servicioMedicos.registrarMedico(medico2);
 
         // 3️⃣ Agendar citas
-        LocalDateTime fechaHoraCita1 = LocalDateTime.parse("2025-02-10T10:00");
-        LocalDateTime fechaHoraCita2 = LocalDateTime.parse("2025-02-10T11:00");
+        //LocalDateTime fechaHoraCita1 = LocalDateTime.parse("2025-02-10T10:00");
+        //LocalDateTime fechaHoraCita2 = LocalDateTime.parse("2025-02-10T11:00");
 
 
-        CitaDTO cita1 = servicioCitas.agendarCita(paciente1.getId().toString(), medico1.getId().toString(), fechaHoraCita1);
+        //CitaDTO cita1 = servicioCitas.agendarCita(paciente1.getId().toString(), medico1.getId().toString(), fechaHoraCita1);
         //CitaDTO cita2 = servicioCitas.agendarCita(paciente2.getId().toString(), medico2.getId().toString(), fechaHoraCita2);
 
         // 4️⃣ Crear y registrar diagnósticos

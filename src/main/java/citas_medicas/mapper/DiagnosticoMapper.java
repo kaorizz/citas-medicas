@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface DiagnosticoMapper {
     DiagnosticoMapper INSTANCE = Mappers.getMapper(DiagnosticoMapper.class);
 
+    @Mapping(target = "cita", ignore = true)  // 🚨 Evita la recursión
     DiagnosticoDTO diagnosticoToDiagnosticoDTO(Diagnostico diagnostico);
 
     Diagnostico diagnosticoDTOToDiagnostico(DiagnosticoDTO diagnosticoDTO);

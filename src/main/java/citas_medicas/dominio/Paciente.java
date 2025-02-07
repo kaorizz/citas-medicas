@@ -1,7 +1,6 @@
 package citas_medicas.dominio;
 
-import citas_medicas.dto.CitaDTO;
-import citas_medicas.dto.PacienteDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +18,7 @@ public class Paciente extends Usuario {
     private String numTarjeta;
     private String telefono;
     private String direccion;
+    @JsonIgnore
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cita> citas;
     @ManyToMany

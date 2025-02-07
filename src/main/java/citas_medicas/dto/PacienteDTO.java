@@ -18,5 +18,5 @@ public class PacienteDTO {
     private String numTarjeta;
     private String telefono;
     private String direccion;
-    private List<CitaDTO> citas;
+    //private List<CitaDTO> citas;
 }
